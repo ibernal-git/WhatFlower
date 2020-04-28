@@ -13,15 +13,20 @@ import CoreML
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var label: UILabel!
     
     let imagePicker = UIImagePickerController()
+    var wikipediaManager = WikipediaManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        label.text = "Press the camera button to take a photo of a flower"
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
         imagePicker.allowsEditing = true
+        
+        wikipediaManager.delegate = self
+
     }
 
     @IBAction func cameraTapped(_ sender: UIBarButtonItem) {
@@ -33,7 +38,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imageView.image = image
+            //imageView.image = image
             
             guard let ciImage = CIImage(image: image) else {
                 fatalError("Cannot convert image to CIImage")
@@ -59,7 +64,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             // the property identifie" is the string of the found object, in this case the flower
             self.navigationItem.title = classification.identifier.capitalized
-            
+            self.wikipediaManager.searchFlower(classification.identifier.capitalized)
             
         }
         let handler = VNImageRequestHandler(ciImage: flowerImage)
@@ -73,3 +78,39 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
 }
 
+extension ViewController: WikipediaManagerDelegate {
+    func didSearchFinished(_ wikipediaManager: WikipediaManager, flower: String) {
+       wikipediaManager.performRequest(flower)
+    }
+    
+    
+    func didFinished(_ wikipediaManager: WikipediaManager, flower: FlowerModel) {
+        DispatchQueue.main.async {
+            self.label.text = flower.extract
+            if let url = URL(string: flower.url) {
+                self.imageView.load(url: url)
+            }
+            //flower.url
+        }
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+    
+    
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}

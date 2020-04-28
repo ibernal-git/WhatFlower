@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F93D9BCC245746E500D41DE5 /* SearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93D9BCB245746E500D41DE5 /* SearchData.swift */; };
+		F93D9BCE245775E500D41DE5 /* FlowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93D9BCD245775E500D41DE5 /* FlowerModel.swift */; };
+		F9BE1A86245707CE00E0B814 /* WikiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BE1A85245707CE00E0B814 /* WikiData.swift */; };
+		F9BE1A8824570A4000E0B814 /* WikipediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BE1A8724570A4000E0B814 /* WikipediaManager.swift */; };
 		F9BE8BFE2456E25400E5743F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BE8BFD2456E25400E5743F /* AppDelegate.swift */; };
 		F9BE8C002456E25400E5743F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BE8BFF2456E25400E5743F /* SceneDelegate.swift */; };
 		F9BE8C022456E25400E5743F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BE8C012456E25400E5743F /* ViewController.swift */; };
@@ -17,6 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F93D9BCB245746E500D41DE5 /* SearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchData.swift; sourceTree = "<group>"; };
+		F93D9BCD245775E500D41DE5 /* FlowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerModel.swift; sourceTree = "<group>"; };
+		F9BE1A85245707CE00E0B814 /* WikiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiData.swift; sourceTree = "<group>"; };
+		F9BE1A8724570A4000E0B814 /* WikipediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaManager.swift; sourceTree = "<group>"; };
 		F9BE8BFA2456E25400E5743F /* WhatFlower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatFlower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9BE8BFD2456E25400E5743F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9BE8BFF2456E25400E5743F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +47,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F9BE1A8924570A4D00E0B814 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F9BE1A8724570A4000E0B814 /* WikipediaManager.swift */,
+				F9BE1A85245707CE00E0B814 /* WikiData.swift */,
+				F9BE8C112456E31F00E5743F /* FlowerClassifier.mlmodel */,
+				F93D9BCB245746E500D41DE5 /* SearchData.swift */,
+				F93D9BCD245775E500D41DE5 /* FlowerModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F9BE1A8A24570A7C00E0B814 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F9BE8C012456E25400E5743F /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F9BE1A8B24570A8A00E0B814 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F9BE8C032456E25400E5743F /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F9BE1A8C24570A9400E0B814 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F9BE8C062456E25600E5743F /* Assets.xcassets */,
+				F9BE8C082456E25600E5743F /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		F9BE8BF12456E25400E5743F = {
 			isa = PBXGroup;
 			children = (
@@ -60,12 +105,11 @@
 			children = (
 				F9BE8BFD2456E25400E5743F /* AppDelegate.swift */,
 				F9BE8BFF2456E25400E5743F /* SceneDelegate.swift */,
-				F9BE8C012456E25400E5743F /* ViewController.swift */,
-				F9BE8C032456E25400E5743F /* Main.storyboard */,
-				F9BE8C062456E25600E5743F /* Assets.xcassets */,
-				F9BE8C082456E25600E5743F /* LaunchScreen.storyboard */,
-				F9BE8C112456E31F00E5743F /* FlowerClassifier.mlmodel */,
+				F9BE1A8924570A4D00E0B814 /* Model */,
+				F9BE1A8A24570A7C00E0B814 /* Controller */,
+				F9BE1A8B24570A8A00E0B814 /* View */,
 				F9BE8C0B2456E25600E5743F /* Info.plist */,
+				F9BE1A8C24570A9400E0B814 /* Supporting Files */,
 			);
 			path = WhatFlower;
 			sourceTree = "<group>";
@@ -143,7 +187,11 @@
 			files = (
 				F9BE8C122456E31F00E5743F /* FlowerClassifier.mlmodel in Sources */,
 				F9BE8C022456E25400E5743F /* ViewController.swift in Sources */,
+				F93D9BCC245746E500D41DE5 /* SearchData.swift in Sources */,
 				F9BE8BFE2456E25400E5743F /* AppDelegate.swift in Sources */,
+				F93D9BCE245775E500D41DE5 /* FlowerModel.swift in Sources */,
+				F9BE1A8824570A4000E0B814 /* WikipediaManager.swift in Sources */,
+				F9BE1A86245707CE00E0B814 /* WikiData.swift in Sources */,
 				F9BE8C002456E25400E5743F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,7 +337,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5HHWC3553C;
 				INFOPLIST_FILE = WhatFlower/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -307,7 +355,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5HHWC3553C;
 				INFOPLIST_FILE = WhatFlower/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
